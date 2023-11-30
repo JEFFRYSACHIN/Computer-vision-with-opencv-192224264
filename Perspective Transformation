@@ -1,0 +1,11 @@
+import cv2
+import numpy as np
+img=cv2.imread("C:/Users/logesh/Downloads/coffee.webp")
+rows,cols,_=img.shape
+pts1=np.float32([[56,65],[389,43],[28,394],[239,390]])
+pts2=np.float32([[100,50],[300,0],[0,300],[300,300]])
+M=cv2.getPerspectiveTransform(pts1,pts2)
+dst=cv2.warpPerspective(img,M,(cols,rows))
+cv2.imshow('Tranformed Image',dst)
+cv2.waitkey(0)
+cv2.destroyAllWindows()
