@@ -1,0 +1,17 @@
+import cv2
+import numpy as np
+img1=cv2.imread("C:/Users/logesh/Downloads/coffee.webp")
+img2=cv2.imread("C:/Users/logesh/Downloads/hub .jpeg")
+
+pts1=np.array([[450,450],[570,550],[450,480],[590,590]])
+pts2=np.array([[590,680],[450,650],[470,550],[550,460]])
+
+H,_=cv2.findHomography(pts1,pts2)
+dst=cv2.warpPerspective(img1,H,(img2.shape[1],img2.shape[0]))
+
+cv2.imshow('img1',img1)
+cv2.imshow('img2',img2)
+cv2.imshow('dst',dst)
+
+cv2.waitkey(0)
+cv2.destroyallwindows()
